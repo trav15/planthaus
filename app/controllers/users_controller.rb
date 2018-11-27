@@ -29,13 +29,18 @@ end
 
   post '/users' do
     @user = User.new(params)
-    if @user.save
-      session[:user_id] = @user.id
-      flash[:message] = "Account created. Welcome, #{@user.username}!"
-      redirect "/users/#{@user.id}"
-    else
-      flash[:errors] = "Could not create new account: #{@user.errors.full_messages.to_sentence}"
+    if params[:email] == User.find_by(email: params[:email]).email
+      flash[:errors] = "Could not create new account: There is already a user with that email address"
       redirect '/signup'
+    else
+      if @user.save
+        session[:user_id] = @user.id
+        flash[:message] = "Account created. Welcome, #{@user.username}!"
+        redirect "/users/#{@user.id}"
+      else
+        flash[:errors] = "Could not create new account: #{@user.errors.full_messages.to_sentence}"
+        redirect '/signup'
+      end
     end
   end
 
