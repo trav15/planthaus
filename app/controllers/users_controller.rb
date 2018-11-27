@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     flash[:message] = "Welcome, #{@user.username}!"
     redirect "users/#{@user.id}"
   else
-    flash[:errors] = "Your credentials were invalid.  Please sign up or try again."
+    flash[:errors] = "Invalid credentials.  Please try again or sign up."
     redirect '/login'
   end
 end
@@ -31,10 +31,10 @@ end
     @user = User.new(params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:message] = "You have successfully created an account, #{@user.username}!"
+      flash[:message] = "Account created. Welcome, #{@user.username}!"
       redirect "/users/#{@user.id}"
     else
-      flash[:errors] = "Account creation failure: #{@user.errors.full_messages.to_sentence}"
+      flash[:errors] = "Could not create new account: #{@user.errors.full_messages.to_sentence}"
       redirect '/signup'
     end
   end
