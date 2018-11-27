@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   get '/login' do
-    erb :login
+    if logged_in?
+      redirect "/users/#{current_user.id}"
+    else
+      erb :login
+    end
   end
 
   post '/login' do
@@ -16,7 +20,11 @@ class UsersController < ApplicationController
 end
 
   get '/signup' do
-    erb :signup
+    if logged_in?
+      redirect "/users/#{current_user.id}"
+    else
+      erb :signup
+    end
   end
 
   post '/users' do
