@@ -53,4 +53,25 @@ class PlantsController < ApplicationController
       redirect "users/#{current_user.id}"
     end
   end
+
+  get '/plants/:id/delete' do
+    redirect_if_not_logged_in
+    @plant = Plant.find(params[:id])
+    if authorized_to_edit?(@plant)
+      erb :'/plants/delete'
+    else
+      redirect "users/#{current_user.id}"
+    end
+  end
+
+  post '/plants/:id/delete' do
+    @plant = Plant.find(params[:id])
+    if authorized_to_edit?(@plant)
+      @plant.delete
+      flash[:message] = "Plant has been removed."
+      redirect '/plants'
+    else
+      redirect '/plants'
+    end
+  end
 end

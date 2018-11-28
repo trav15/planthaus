@@ -16,7 +16,7 @@
   <body>
     <div class="wrapper">
       <% if flash[:message] %>
-        <h3><%= flash[:message] %></h3>
+        <h3 style="color: green;"><%= flash[:message] %></h3>
       <% end %>
       <% if flash[:errors] %>
         <h3 style="color: red;"><%= flash[:errors] %></h3>

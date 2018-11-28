@@ -1,6 +1,7 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
     <h2>PLANTHAUS</h2>
+    <h3>ARE YOU SURE YOU WANT TO REMOVE THIS PLANT?</h3>
     <h3><%= @plant.name %></h3>
 
     <div class="content">
@@ -11,7 +12,10 @@
       <p>Notes: <%= @plant.notes %></p>
       <p>Owner: <%= current_user.username %></p>
       <p><a href="/plants/<%= @plant.id %>/edit">Edit Plant</a></p>
-      <p><a href="/plants/<%= @plant.id %>/delete">Remove Plant</a></p> <!--NEEDS DELETE ROUTE -->
+      <form class="" action="/plants/<%= @plant.id %>/delete" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" name="" value="Yes, Remove This Plant" style="background-color: #f44336">
+      </form>
       <br/>
       <a href="/plants">Back</a><br/>
       <a href="/logout">Logout</a>
