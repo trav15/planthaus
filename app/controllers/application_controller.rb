@@ -38,12 +38,6 @@ class ApplicationController < Sinatra::Base
         redirect '/'
       end
     end
-
-    def redirect_if_logged_in
-      if logged_in?
-        redirect "/users/#{current_user.id}"
-      end
-    end
   end
 
 end
