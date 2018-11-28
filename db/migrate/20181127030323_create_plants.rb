@@ -7,6 +7,7 @@ class CreatePlants < ActiveRecord::Migration
       t.string :light_requirement
       t.string :date_purchased
       t.string :notes
+      t.integer :user_id
     end
   end
 end

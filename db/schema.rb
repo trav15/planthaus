@@ -14,12 +14,13 @@
 ActiveRecord::Schema.define(version: 20181127030323) do
 
   create_table "plants", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
-    t.string "water_requirement"
-    t.string "light_requirement"
-    t.string "date_purchased"
-    t.string "notes"
+    t.string  "name"
+    t.string  "type"
+    t.string  "water_requirement"
+    t.string  "light_requirement"
+    t.string  "date_purchased"
+    t.string  "notes"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
