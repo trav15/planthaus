@@ -4,9 +4,11 @@
     <h3><%= @user.username %>'s Plant Family</h3>
     <p>You have <%= @user.plants.size %> plants in your family.</p><br/>
     <div class="content">
+      <ul>
       <% @user.plants.all.each do |plant| %>
-        <p>&#8277; <a href="/plants/<%=plant.id%>"><%= plant.name %></a></p><br/>
+        <li>&#8277; <a href="/plants/<%=plant.id%>"><%= plant.name %></a></li><br/>
       <% end %>
+      </ul>
       <br/>
       <a href="/plants/new">Add A New Plant</a><br/>
       <a href="/logout">Logout</a>
