@@ -6,8 +6,12 @@
     <div class="content">
       <form action="/plants" method="POST">
         <p>Plant name: <input type="text" name="name"></p>
-        <p>Type: <input type="text" name="name"></p>
-        <p>Light requirements: <input type="text" name="light_requirement"></p>
+        <p>Type: <input type="radio" name="type" value="leafy"> Leafy
+          <input type="radio" name="type" value="succulent"> Succulent
+          <input type="radio" name="type" value="cactus"> Cactus</p>
+        <p>Light requirements: <input type="radio" name="light_requirement" value="low"> Low
+          <input type="radio" name="light_requirement" value="medium"> Medium
+          <input type="radio" name="light_requirement" value="bright"> Bright</p></p>
         <p>Water requirements: <input type="text" name="water_requirement"></p>
         <p>Date purchased: <input type="text" name="date_purchased"></p>
         <p>Notes : <input type="text" name="notes"></p>
