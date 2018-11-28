@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   get '/login' do
     if logged_in?
-      redirect "/users/#{current_user.id}"
+      redirect "/plants"
     else
       erb :login
     end
@@ -21,7 +21,7 @@ end
 
   get '/signup' do
     if logged_in?
-      redirect "/users/#{current_user.id}"
+      redirect "/plants"
     else
       erb :signup
     end
@@ -32,7 +32,7 @@ end
     if @user.save
       session[:user_id] = @user.id
       flash[:message] = "Account created. Welcome, #{@user.username}!"
-      redirect "/users/#{@user.id}"
+      redirect "/plants"
     else
       flash[:errors] = "Could not create new account: #{@user.errors.full_messages.to_sentence}"
       redirect '/signup'
@@ -45,10 +45,10 @@ end
   # end
 
 
-  get '/users/:id' do
-    @user = User.find_by(id: params[:id])
-    erb :'/users/show'
-  end
+  # get '/users/:id' do
+  #   @user = User.find_by(id: params[:id])
+  #   erb :'/users/show'
+  # end
 
   get '/logout' do
     session.clear
