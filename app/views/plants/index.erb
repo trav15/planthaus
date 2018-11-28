@@ -5,7 +5,7 @@
     <p>You have <%= @user.plants.size %> plants in your family.</p><br/>
     <div class="content">
       <% @user.plants.all.each do |plant| %>
-        <p><a href="/plants/<%=plant.id%>"><%= plant.name %></a></p><br/>
+        <p>&#8277; <a href="/plants/<%=plant.id%>"><%= plant.name %></a></p><br/>
       <% end %>
       <br/>
       <a href="/plants/new">Add A New Plant</a><br/>
