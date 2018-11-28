@@ -1,1 +1,19 @@
-TEST
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <h2>PLANTHAUS</h2>
+    <h3><%= @plant.name %></h3>
+
+    <div class="content">
+      <p>Plant type: <%= @plant.plant_type %></p>
+      <p>Water requirement: <%= @plant.water_requirement %></p>
+      <p>Light requirement: <%= @plant.light_requirement %></p>
+      <p>Date puchased: <%= @plant.date_purchased %></p>
+      <p>Notes: <%= @plant.notes %></p>
+      <p>Owner: <%= current_user.username %></p>
+      <br/>
+      <a href="/">Back</a><br/>
+      <a href="/logout">Logout</a>
+    </div>
+
+  </div>
+</div>
