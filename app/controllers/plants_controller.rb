@@ -23,8 +23,10 @@ class PlantsController < ApplicationController
       else
         @plant = current_user.plants.new(params)
         if @plant.save
+          flash[:message] = "New plant added to the family!"
           redirect to "/plants/#{@plant.id}"
         else
+          flash[:errors] = "Unable to add plant: #{@plant.errors.full_messages.to_sentence}. Please try again."
           redirect to "/plants/new"
         end
       end
