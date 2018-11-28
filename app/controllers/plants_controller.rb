@@ -43,4 +43,14 @@ class PlantsController < ApplicationController
       redirect to '/login'
     end
   end
+
+  get '/plants/:id/edit' do
+    redirect_if_not_logged_in
+    @plant = Plant.find(params[:id])
+    if authorized_to_edit?(@plant)
+      erb :'/plants/edit'
+    else
+      redirect "users/#{current_user.id}"
+    end
+  end
 end

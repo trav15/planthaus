@@ -1,21 +1,22 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
     <h2>PLANTHAUS</h2>
-    <h3>New Plant</h3>
+    <h3>Edit Plant</h3>
 
     <div class="content">
-      <form action="/plants" method="POST">
-        <p>Plant name: <input type="text" name="name"></p>
+      <form action="/plants/<%= @plant.id %>" method="POST">
+        <input type="hidden" name="_method" value="patch">
+        <p>Plant name: <input type="text" name="name" value="<%= @plant.name %>"></p>
         <p>Type: <input type="radio" name="plant_type" value="leafy"> Leafy
           <input type="radio" name="plant_type" value="succulent"> Succulent
           <input type="radio" name="plant_type" value="cactus"> Cactus</p>
         <p>Light requirements: <input type="radio" name="light_requirement" value="low"> Low
           <input type="radio" name="light_requirement" value="medium"> Medium
           <input type="radio" name="light_requirement" value="bright"> Bright</p></p>
-        <p>Water requirements: <input type="text" name="water_requirement"></p>
-        <p>Date purchased: <input type="text" name="date_purchased"></p>
-        <p>Notes : <input type="text" name="notes"></p>
-        <input type="submit" value="Add Plant">
+        <p>Water requirements: <input type="text" name="water_requirement" value="<%= @plant.water_requirement %>"></p>
+        <p>Date purchased: <input type="text" name="date_purchased" value="<%= @plant.date_purchased %>"></p>
+        <p>Notes : <input type="text" name="notes" value="<%= @plant.notes %>"></p>
+        <input type="submit" value="Update Plant">
       </form>
       <br/>
       <a href="/plants">Back</a><br/>
