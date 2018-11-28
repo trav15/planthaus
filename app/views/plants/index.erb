@@ -1,13 +1,18 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
     <h2>PLANTHAUS</h2>
-    <h3><%= @user.username %>'s Plant Collection</h3>
-
+    <h3><%= @user.username %>'s Plant Family</h3>
     <div class="content">
-      <!-- Add iteration to display collection
-      Add Navigation to create new plant -->
+      <% @user.plants.all.each do |plant| %>
+        <a href="/plants/<%=plant.id%>"><%= plant.name %></a><br/>
+      <% end %>
+      <br/>
+      <a href="/plants/new">Add A New Plant</a><br/>
       <a href="/logout">Logout</a>
     </div>
+    <nav>
+
+    </nav>
 
   </div>
 </div>

@@ -23,7 +23,7 @@ class PlantsController < ApplicationController
       else
         @plant = current_user.plants.new(params)
         if @plant.save
-          redirect to "/plants/<%= @plant.id %>"
+          redirect to "/plants/#{@plant.id}"
         else
           redirect to "/plants/new"
         end
