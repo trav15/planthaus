@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   if @user && @user.authenticate(params[:password])
     session[:user_id] = @user.id
     flash[:message] = "Welcome, #{@user.username}!"
-    redirect "users/#{@user.id}"
+    redirect "/plants"
   else
     flash[:errors] = "Invalid credentials.  Please try again or sign up."
     redirect '/login'
@@ -38,6 +38,12 @@ end
       redirect '/signup'
     end
   end
+
+  # get '/users' do #All users index page
+  #   @users = User.all
+  #   erb :'/users/index'
+  # end
+
 
   get '/users/:id' do
     @user = User.find_by(id: params[:id])

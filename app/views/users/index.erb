@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <h2>PLANTHAUS Collection</h2>
+    <h3>Click on a user to see their collection</h3>
+
+    <div class="content">
+      <ul>
+      <% @users.each do |user| %>
+        <li><a href="/user/<%= user.id %>" ><%= user.username %>'s Plant Collection</a></li>
+      <% end %>
+    </div>
+
+  </div>
+</div>
