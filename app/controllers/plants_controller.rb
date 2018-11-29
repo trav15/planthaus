@@ -59,13 +59,9 @@ class PlantsController < ApplicationController
     redirect_if_not_logged_in
     @plant = Plant.find(params[:id])
     if authorized_to_edit?(@plant) && params[:name] != ""
-      @plant.update(params)
-      if @plant.save?
-        flash[:message] = "Plant information updated!"
-        redirect "/plants"
-      else
-        redirect "/plant/#{@plant.id}/edit"
-      end
+      @plant.update(name: params[:name], plant_type: params[:plant_type], light_requirement: params[:light_requirement], water_requirement: params[:water_requirement], date_purchased: params[:date_purchased], notes: params[:notes])
+      flash[:message] = "Plant information updated!"
+      redirect "/plants/#{@plant.id}"
     else
       flash[:errors] = "You do not have permission to edit this plant."
       redirect "/plants"
