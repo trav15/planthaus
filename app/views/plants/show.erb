@@ -9,7 +9,7 @@
       <p>Light requirement: <%= @plant.light_requirement %></p>
       <p>Date puchased: <%= @plant.date_purchased %></p>
       <p>Notes: <%= @plant.notes %></p>
-      <p>Owner: <%= current_user.username %></p>
+      <p>Owner: <%= User.find_by_id(@plant.user_id).username %></p>
       <p><a href="/plants/<%= @plant.id %>/edit">Edit Plant</a></p>
       <p><a href="/plants/<%= @plant.id %>/delete">Remove Plant</a></p> <!--NEEDS DELETE ROUTE -->
       <br/>
