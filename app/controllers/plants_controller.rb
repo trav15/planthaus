@@ -23,7 +23,7 @@ class PlantsController < ApplicationController
       else
         @plant = current_user.plants.new(params)
         if @plant.save
-          flash[:message] = "New plant added to the family!"
+          flash[:message] = "New plant added to your house!"
           redirect to "/plants/#{@plant.id}"
         else
           flash[:errors] = "Unable to add plant: #{@plant.errors.full_messages.to_sentence}. Please try again."
@@ -50,7 +50,21 @@ class PlantsController < ApplicationController
     if authorized_to_edit?(@plant)
       erb :'/plants/edit'
     else
-      redirect "users/#{current_user.id}"
+      flash[:errors] = "You do not have permission to edit this plant."
+      redirect "/plants"
+    end
+  end
+
+  patch '/plants/:id' do
+    redirect_if_not_logged_in
+    @plant = Plant.find(params[:id])
+    if authorized_to_edit?(@plant) && params[:name] != ""
+      @plant.update(params)
+      flash[:message] = "Plant information updated!"
+      redirect "/plants"
+    else
+      flash[:errors] = "You do not have permission to edit this plant."
+      redirect "/plants"
     end
   end
 
@@ -60,7 +74,8 @@ class PlantsController < ApplicationController
     if authorized_to_edit?(@plant)
       erb :'/plants/delete'
     else
-      redirect "users/#{current_user.id}"
+      flash[:errors] = "You do not have permission to edit this plant."
+      redirect "/plants"
     end
   end
 
