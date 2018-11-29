@@ -4,7 +4,7 @@
     <h3>Edit Plant</h3>
 
     <div class="content">
-      <form action="/plants/<%= @plant.id %>" method="POST">
+      <form class="" action="/plants/<%= @plant.id %>" method="POST">
         <input type="hidden" name="_method" value="patch">
         <p>Plant name: <input type="text" name="name" value="<%= @plant.name %>"></p>
         <p>Type: <input type="radio" name="plant_type" value="leafy"> Leafy
