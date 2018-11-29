@@ -55,7 +55,7 @@ class PlantsController < ApplicationController
     end
   end
 
-  put '/plants/:id' do
+  patch '/plants/:id' do
     redirect_if_not_logged_in
     @plant = Plant.find(params[:id])
     if authorized_to_edit?(@plant) && params[:name] != ""
