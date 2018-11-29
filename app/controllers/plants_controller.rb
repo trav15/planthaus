@@ -79,7 +79,7 @@ class PlantsController < ApplicationController
     end
   end
 
-  post '/plants/:id/delete' do
+  delete '/plants/:id/delete' do
     @plant = Plant.find(params[:id])
     if authorized_to_edit?(@plant)
       @plant.delete
