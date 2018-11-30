@@ -2,7 +2,11 @@
   <div class="col-md-8 col-md-offset-2">
     <h2>PLANTHAUS</h2>
     <h3><%= @user.username %>'s Plant Family</h3>
-    <p>You have <%= @user.plants.size %> plants in your family.</p><br/>
+    <% if @user.plants.size == 1 %>
+      <p>You have 1 plant in your family.</p><br/>
+    <% else %>
+      <p>You have <%= @user.plants.size %> plants in your family.</p><br/>
+    <% end %>
     <div class="content">
       <ul>
       <% @user.plants.all.each do |plant| %>
