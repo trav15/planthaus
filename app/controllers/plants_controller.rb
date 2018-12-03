@@ -38,7 +38,12 @@ class PlantsController < ApplicationController
   get '/plants/:id' do
     if logged_in?
       @plant = Plant.find_by_id(params[:id])
-      erb :'plants/show'
+      if authorized_to_edit?(@plant)
+        erb :'plants/show'
+      else
+        flash[:errors] = "You do not have permission to view this plant."
+        redirect "/plants"
+      end
     else
       redirect to '/login'
     end
